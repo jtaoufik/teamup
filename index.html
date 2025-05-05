@@ -1,843 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Team Up - Enterprise Event Management</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        body {
-            background-color: #f8f9fa;
-            color: #333;
-            line-height: 1.6;
-        }
-        
-        header {
-            background-color: #2c3e50;
-            color: white;
-            padding: 1rem 0;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            position: fixed;
-            width: 100%;
-            z-index: 1000;
-        }
-        
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-        }
-        
-        .nav-links {
-            display: flex;
-            list-style: none;
-            align-items: center;
-        }
-        
-        .nav-links li {
-            margin: 0 1rem;
-        }
-        
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-        
-        .nav-links a:hover {
-            color: #3498db;
-        }
-
-        .btn {
-            background-color: #3498db;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-        }
-
-        .btn:hover {
-            background-color: #2980b9;
-            color: white;
-        }
-        
-        main {
-            padding-top: 80px;
-            min-height: calc(100vh - 160px);
-        }
-
-        footer {
-            background-color: #2c3e50;
-            color: white;
-            padding: 2rem 0;
-            margin-top: auto;
-        }
-
-        .footer-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .social-links a {
-            color: white;
-            font-size: 1.5rem;
-            transition: color 0.3s ease;
-        }
-
-        .social-links a:hover {
-            color: #3498db;
-        }
-        
-        @media (max-width: 768px) {
-            nav {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .logo {
-                margin-bottom: 1rem;
-            }
-            
-            .nav-links {
-                flex-direction: column;
-                width: 100%;
-                text-align: center;
-            }
-            
-            .nav-links li {
-                margin: 0.5rem 0;
-            }
-
-            .footer-content {
-                flex-direction: column;
-                gap: 1rem;
-                text-align: center;
-            }
-        }
-
-        .hero {
-            background: linear-gradient(135deg, #2c3e50, #3498db);
-            color: white;
-            padding: 100px 0 50px;
-            text-align: center;
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 800px;
-            margin: 0 auto 2rem;
-        }
-
-        .cta-btn {
-            display: inline-block;
-            background-color: #e74c3c;
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: all 0.3s ease;
-        }
-
-        .cta-btn:hover {
-            background-color: #c0392b;
-            transform: translateY(-2px);
-        }
-
-        .features {
-            padding: 5rem 0;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .feature-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
-
-        .feature-card i {
-            font-size: 2.5rem;
-            color: #3498db;
-            margin-bottom: 1rem;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .section-title h2 {
-            font-size: 2.5rem;
-            color: #2c3e50;
-            margin-bottom: 1rem;
-        }
-
-        .pricing {
-            background-color: #f1f5f9;
-            padding: 5rem 0;
-        }
-
-        .contact {
-            padding: 5rem 0;
-        }
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        html {
-            scroll-behavior: smooth;
-            scroll-padding-top: 120px;
-        }
-
-        .pricing-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            padding: 2rem 0;
-        }
-
-        .pricing-card {
-            background: white;
-            border-radius: 15px;
-            padding: 2rem;
-            text-align: center;
-            transition: transform 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .pricing-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .pricing-card.featured::before {
-            content: "Most Popular";
-            position: absolute;
-            top: 20px;
-            right: -35px;
-            background: #e74c3c;
-            color: white;
-            padding: 5px 40px;
-            transform: rotate(45deg);
-            font-size: 0.8rem;
-        }
-
-        .pricing-card h3 {
-            color: #2c3e50;
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-        }
-
-        .pricing-card .price {
-            font-size: 2.5rem;
-            color: #3498db;
-            margin-bottom: 2rem;
-        }
-
-        .pricing-card .features {
-            margin: 2rem 0;
-        }
-
-        .pricing-card .feature-item {
-            padding: 0.5rem 0;
-            border-bottom: 1px solid #eee;
-        }
-
-        .contact-form {
-            max-width: 600px;
-            margin: 0 auto;
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: #2c3e50;
-            font-weight: bold;
-        }
-
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
-            width: 100%;
-            padding: 0.8rem;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 1rem;
-            transition: border-color 0.3s ease;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus,
-        .form-group select:focus {
-            border-color: #3498db;
-            outline: none;
-        }
-
-        .made-in-france {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            margin-top: 1rem;
-            color: #fff;
-            font-size: 0.9rem;
-        }
-
-        .made-in-france img {
-            width: 20px;
-            height: auto;
-        }
-
-        @media (max-width: 768px) {
-            .pricing-cards {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .language-switcher {
-            display: flex;
-            gap: 10px;
-            justify-content: center;
-            margin-top: 1rem;
-        }
-
-        .language-switcher .flag {
-            width: 30px;
-            height: 20px;
-            cursor: pointer;
-            opacity: 0.6;
-            transition: all 0.3s ease;
-        }
-
-        .language-switcher .flag:hover {
-            opacity: 1;
-            transform: scale(1.1);
-        }
-
-        .language-switcher .flag.active {
-            opacity: 1;
-            border: 2px solid #3498db;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Team Up - Enterprise Event Management</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+    body { background-color:#f8f9fa; color:#333; line-height:1.6; }
+    header { background-color:#2c3e50; color:white; padding:1rem 0; box-shadow:0 2px 10px rgba(0,0,0,0.1); position:fixed; width:100%; z-index:1000; }
+    .container { width:90%; max-width:1200px; margin:0 auto; padding:0 20px; }
+    nav { display:flex; justify-content:space-between; align-items:center; }
+    .logo { font-size:1.8rem; font-weight:bold; }
+    .nav-links { display:flex; list-style:none; align-items:center; }
+    .nav-links li { margin:0 1rem; }
+    .nav-links a { color:white; text-decoration:none; transition:all .3s ease; }
+    .nav-links a:hover { color:#3498db; }
+    .btn { background-color:#3498db; padding:.5rem 1rem; border-radius:5px; }
+    .btn:hover { background-color:#2980b9; color:white; }
+    main { padding-top:80px; min-height:calc(100vh - 160px); }
+    .hero { background:linear-gradient(135deg,#2c3e50,#3498db); color:white; padding:100px 0 50px; text-align:center; }
+    .hero h1 { font-size:3rem; margin-bottom:1.5rem; }
+    .hero p { font-size:1.2rem; max-width:800px; margin:0 auto 2rem; }
+    .cta-btn { display:inline-block; background-color:#e74c3c; color:white; padding:1rem 2rem; border-radius:5px; text-decoration:none; font-weight:bold; transition:all .3s ease; }
+    .cta-btn:hover { background-color:#c0392b; transform:translateY(-2px); }
+    .features { padding:5rem 0; }
+    .features-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:2rem; margin-top:3rem; }
+    .feature-card { background:white; padding:2rem; border-radius:10px; box-shadow:0 4px 6px rgba(0,0,0,0.1); text-align:center; }
+    .feature-card i { font-size:2.5rem; color:#3498db; margin-bottom:1rem; }
+    .section-title { text-align:center; margin-bottom:3rem; }
+    .section-title h2 { font-size:2.5rem; color:#2c3e50; margin-bottom:1rem; }
+    .pricing { background-color:#f1f5f9; padding:5rem 0; }
+    .pricing-cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:2rem; padding:2rem 0; }
+    .pricing-card { background:white; border-radius:15px; padding:2rem; text-align:center; transition:transform .3s ease; box-shadow:0 4px 6px rgba(0,0,0,0.1); position:relative; overflow:hidden; }
+    .pricing-card:hover { transform:translateY(-10px); }
+    .pricing-card.featured::before { content:"Most Popular"; position:absolute; top:20px; right:-35px; background:#e74c3c; color:white; padding:5px 40px; transform:rotate(45deg); font-size:.8rem; }
+    .pricing-card h3 { color:#2c3e50; font-size:1.8rem; margin-bottom:1rem; }
+    .pricing-card .price { font-size:2.5rem; color:#3498db; margin-bottom:2rem; }
+    .pricing-card .feature-item { padding:.5rem 0; border-bottom:1px solid #eee; }
+    .trusted { background:white; padding:3rem 0; text-align:center; }
+    .trusted-logos { display:flex; flex-wrap:wrap; justify-content:center; gap:2rem; margin-top:2rem; }
+    .trusted-logos img { max-height:50px; object-fit:contain; opacity:.8; transition:opacity .3s ease; }
+    .trusted-logos img:hover { opacity:1; }
+    .contact { padding:5rem 0; }
+    .contact-form { max-width:600px; margin:0 auto; background:white; padding:2rem; border-radius:15px; box-shadow:0 4px 6px rgba(0,0,0,0.1); }
+    .form-group { margin-bottom:1.5rem; }
+    .form-group label { display:block; margin-bottom:.5rem; color:#2c3e50; font-weight:bold; }
+    .form-group input, .form-group textarea, .form-group select { width:100%; padding:.8rem; border:1px solid #ddd; border-radius:5px; font-size:1rem; transition:border-color .3s ease; }
+    .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color:#3498db; outline:none; }
+    footer { background:#2c3e50; color:white; padding:2rem 0; }
+    .footer-content { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; }
+    .social-links { display:flex; gap:1rem; }
+    .social-links a { color:white; font-size:1.5rem; transition:color .3s ease; }
+    .social-links a:hover { color:#3498db; }
+    .made-in-france { display:flex; align-items:center; gap:.5rem; font-size:.9rem; }
+    .language-switcher { display:flex; gap:10px; justify-content:center; margin-top:1rem; }
+    .language-switcher .flag { width:30px; height:20px; cursor:pointer; opacity:.6; transition:all .3s ease; }
+    .language-switcher .flag:hover { opacity:1; transform:scale(1.1); }
+    .language-switcher .flag.active { opacity:1; border:2px solid #3498db; }
+    @media(max-width:768px){ .footer-content { flex-direction:column; text-align:center; } .pricing-cards { grid-template-columns:1fr; } }
+  </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <nav>
-                <div class="logo">Team Up</div>
-                <ul class="nav-links">
-                    <li><a href="#features"><i class="fas fa-star"></i> Features</a></li>
-                    <li><a href="#about"><i class="fas fa-info-circle"></i> About</a></li>
-                    <li><a href="#pricing"><i class="fas fa-tag"></i> Pricing</a></li>
-                    <li><a href="#contact" class="btn"><i class="fas fa-rocket"></i> Get Started</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <main>
-        <section class="hero">
-            <div class="container">
-                <h1>Transform Your Company Events</h1>
-                <p>Empower your employees to create, manage, and participate in company events with our customizable enterprise platform. Available on iOS and Android.</p>
-                <a href="#contact" class="cta-btn">Schedule a Demo</a>
-            </div>
-        </section>
-
-        <section id="features" class="features">
-            <div class="container">
-                <div class="section-title">
-                    <h2>Why Choose Team Up?</h2>
-                    <p>Streamline event management while building stronger teams</p>
-                </div>
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <i class="fas fa-shield-alt"></i>
-                        <h3>Enterprise Security</h3>
-                        <p>Seamless integration with your company's authentication system and optional on-premise data storage.</p>
-                    </div>
-                    <div class="feature-card">
-                        <i class="fas fa-paint-brush"></i>
-                        <h3>Custom Branding</h3>
-                        <p>Fully customizable platform with your company's colors, logo, and branded experience.</p>
-                    </div>
-                    <div class="feature-card">
-                        <i class="fas fa-chart-line"></i>
-                        <h3>Analytics & Insights</h3>
-                        <p>Comprehensive statistics and logs to track engagement and measure team building success.</p>
-                    </div>
-                    <div class="feature-card">
-                        <i class="fas fa-users"></i>
-                        <h3>Employee-Driven</h3>
-                        <p>Empower employees to organize events, fostering organic team building and collaboration.</p>
-                    </div>
-                    <div class="feature-card">
-                        <i class="fas fa-mobile-alt"></i>
-                        <h3>Mobile First</h3>
-                        <p>Native apps for both iOS and Android platforms, customized for your company.</p>
-                    </div>
-                    <div class="feature-card">
-                        <i class="fas fa-dollar-sign"></i>
-                        <h3>Cost Effective</h3>
-                        <p>Reduce event management overhead while increasing employee engagement.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="about" class="about">
-            <div class="container">
-                <div class="section-title">
-                    <h2>About Team Up</h2>
-                    <p>Building stronger teams through seamless event management</p>
-                </div>
-                <div class="about-content">
-                    <p>Team Up is an enterprise-grade event management platform designed to strengthen company culture and team bonds. Our platform enables employees to take initiative in organizing events while providing companies with the tools to oversee and analyze team building activities.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="pricing" class="pricing">
-            <div class="container">
-                <div class="section-title">
-                    <h2>Flexible Enterprise Pricing</h2>
-                    <p>Choose the perfect plan for your company</p>
-                </div>
-                <div class="pricing-cards">
-                    <div class="pricing-card">
-                        <h3>Starter</h3>
-                        <div class="price">$499<span>/month</span></div>
-                        <div class="features">
-                            <div class="feature-item">Up to 100 Employees</div>
-                            <div class="feature-item">Basic Analytics</div>
-                            <div class="feature-item">Standard Support</div>
-                            <div class="feature-item">Cloud Storage</div>
-                        </div>
-                        <a href="#contact" class="cta-btn">Get Started</a>
-                    </div>
-                    <div class="pricing-card featured">
-                        <h3>Professional</h3>
-                        <div class="price">$999<span>/month</span></div>
-                        <div class="features">
-                            <div class="feature-item">Up to 500 Employees</div>
-                            <div class="feature-item">Advanced Analytics</div>
-                            <div class="feature-item">Priority Support</div>
-                            <div class="feature-item">Custom Branding</div>
-                        </div>
-                        <a href="#contact" class="cta-btn">Get Started</a>
-                    </div>
-                    <div class="pricing-card">
-                        <h3>Enterprise</h3>
-                        <div class="price">Custom</div>
-                        <div class="features">
-                            <div class="feature-item">Unlimited Employees</div>
-                            <div class="feature-item">Custom Integration</div>
-                            <div class="feature-item">24/7 Support</div>
-                            <div class="feature-item">On-Premise Option</div>
-                        </div>
-                        <a href="#contact" class="cta-btn">Contact Us</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact" class="contact">
-            <div class="container">
-                <div class="section-title">
-                    <h2>Contact Us</h2>
-                    <p>Get in touch to transform your company's event management</p>
-                </div>
-                <form class="contact-form" id="contactForm">
-                    <div class="form-group">
-                        <label for="company">Company Name</label>
-                        <input type="text" id="company" name="company" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="name">Contact Person</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="employees">Number of Employees</label>
-                        <select id="employees" name="employees" required>
-                            <option value="">Select range</option>
-                            <option value="1-100">1-100</option>
-                            <option value="101-500">101-500</option>
-                            <option value="501-1000">501-1000</option>
-                            <option value="1000+">1000+</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" rows="5" required></textarea>
-                    </div>
-                    <button type="submit" class="cta-btn">Send Message</button>
-                </form>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="logo">Team Up</div>
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-linkedin"></i></a>
-                    <a href="#"><i class="fab fa-github"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                </div>
-                <div class="copyright">© 2025 Team Up. All rights reserved.</div>
-                <div class="made-in-france">
-                    Made with <i class="fas fa-heart" style="color: #e74c3c;"></i> in France
-                    <img src="https://flagcdn.com/w40/fr.png" alt="French Flag">
-                </div>
-                <div class="language-switcher">
-                    <img src="https://flagcdn.com/w40/gb.png" alt="English" onclick="switchLanguage('en')" class="flag active">
-                    <img src="https://flagcdn.com/w40/fr.png" alt="Français" onclick="switchLanguage('fr')" class="flag">
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-
-        // Contact form handling
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            // Here you would typically send the form data to your server
-            alert('Thank you for your interest! We will contact you soon.');
-            this.reset();
-        });
-
-        // Simple translations object
-        const translations = {
-            en: {
-                features: "Features",
-                about: "About",
-                pricing: "Pricing",
-                getStarted: "Get Started",
-                hero: {
-                    title: "Transform Your Company Events",
-                    description: "Empower your employees to create, manage, and participate in company events with our customizable enterprise platform. Available on iOS and Android.",
-                    cta: "Schedule a Demo"
-                },
-                whyChoose: {
-                    title: "Why Choose Team Up?",
-                    subtitle: "Streamline event management while building stronger teams",
-                    security: {
-                        title: "Enterprise Security",
-                        desc: "Seamless integration with your company's authentication system and optional on-premise data storage."
-                    },
-                    branding: {
-                        title: "Custom Branding",
-                        desc: "Fully customizable platform with your company's colors, logo, and branded experience."
-                    },
-                    analytics: {
-                        title: "Analytics & Insights",
-                        desc: "Comprehensive statistics and logs to track engagement and measure team building success."
-                    },
-                    employee: {
-                        title: "Employee-Driven",
-                        desc: "Empower employees to organize events, fostering organic team building and collaboration."
-                    },
-                    mobile: {
-                        title: "Mobile First",
-                        desc: "Native apps for both iOS and Android platforms, customized for your company."
-                    },
-                    cost: {
-                        title: "Cost Effective",
-                        desc: "Reduce event management overhead while increasing employee engagement."
-                    }
-                },
-                about: {
-                    title: "About Team Up",
-                    subtitle: "Building stronger teams through seamless event management",
-                    description: "Team Up is an enterprise-grade event management platform designed to strengthen company culture and team bonds. Our platform enables employees to take initiative in organizing events while providing companies with the tools to oversee and analyze team building activities."
-                },
-                pricing: {
-                    title: "Flexible Enterprise Pricing",
-                    subtitle: "Choose the perfect plan for your company",
-                    starter: {
-                        title: "Starter",
-                        price: "$499/month",
-                        features: ["Up to 100 Employees", "Basic Analytics", "Standard Support", "Cloud Storage"]
-                    },
-                    professional: {
-                        title: "Professional",
-                        price: "$999/month",
-                        features: ["Up to 500 Employees", "Advanced Analytics", "Priority Support", "Custom Branding"]
-                    },
-                    enterprise: {
-                        title: "Enterprise",
-                        price: "Custom",
-                        features: ["Unlimited Employees", "Custom Integration", "24/7 Support", "On-Premise Option"]
-                    }
-                },
-                contact: {
-                    title: "Contact Us",
-                    subtitle: "Get in touch to transform your company's event management",
-                    company: "Company Name",
-                    name: "Contact Person",
-                    email: "Email",
-                    employees: "Number of Employees",
-                    selectRange: "Select range",
-                    message: "Message",
-                    send: "Send Message"
-                },
-                footer: {
-                    copyright: "© 2025 Team Up. All rights reserved.",
-                    madeWith: "Made with",
-                    in: "in"
-                }
-            },
-            fr: {
-                features: "Fonctionnalités",
-                about: "À propos",
-                pricing: "Tarifs",
-                getStarted: "Commencer",
-                hero: {
-                    title: "Transformez vos Événements d'Entreprise",
-                    description: "Permettez à vos employés de créer, gérer et participer à des événements d'entreprise avec notre plateforme personnalisable. Disponible sur iOS et Android.",
-                    cta: "Demander une Démo"
-                },
-                whyChoose: {
-                    title: "Pourquoi Choisir Team Up ?",
-                    subtitle: "Simplifiez la gestion des événements tout en renforçant vos équipes",
-                    security: {
-                        title: "Sécurité Entreprise",
-                        desc: "Intégration transparente avec le système d'authentification de votre entreprise et stockage des données sur site en option."
-                    },
-                    branding: {
-                        title: "Personnalisation",
-                        desc: "Plateforme entièrement personnalisable avec les couleurs, le logo et l'expérience de marque de votre entreprise."
-                    },
-                    analytics: {
-                        title: "Analyses & Insights",
-                        desc: "Statistiques et journaux complets pour suivre l'engagement et mesurer le succès du team building."
-                    },
-                    employee: {
-                        title: "Géré par les Employés",
-                        desc: "Permettez aux employés d'organiser des événements, favorisant la collaboration et l'esprit d'équipe."
-                    },
-                    mobile: {
-                        title: "Mobile First",
-                        desc: "Applications natives pour iOS et Android, personnalisées pour votre entreprise."
-                    },
-                    cost: {
-                        title: "Coût Efficace",
-                        desc: "Réduisez les frais de gestion des événements tout en augmentant l'engagement des employés."
-                    }
-                },
-                about: {
-                    title: "À propos de Team Up",
-                    subtitle: "Construire des équipes plus fortes grâce à une gestion événementielle simplifiée",
-                    description: "Team Up est une plateforme de gestion d'événements d'entreprise conçue pour renforcer la culture d'entreprise et les liens d'équipe. Notre plateforme permet aux employés de prendre l'initiative dans l'organisation d'événements tout en fournissant aux entreprises les outils pour superviser et analyser les activités de team building."
-                },
-                pricing: {
-                    title: "Tarification Flexible",
-                    subtitle: "Choisissez le forfait idéal pour votre entreprise",
-                    starter: {
-                        title: "Débutant",
-                        price: "499€/mois",
-                        features: ["Jusqu'à 100 employés", "Analyses de base", "Support standard", "Stockage cloud"]
-                    },
-                    professional: {
-                        title: "Professionnel",
-                        price: "999€/mois",
-                        features: ["Jusqu'à 500 employés", "Analyses avancées", "Support prioritaire", "Personnalisation"]
-                    },
-                    enterprise: {
-                        title: "Entreprise",
-                        price: "Sur mesure",
-                        features: ["Employés illimités", "Intégration personnalisée", "Support 24/7", "Option sur site"]
-                    }
-                },
-                contact: {
-                    title: "Contactez-nous",
-                    subtitle: "Contactez-nous pour transformer la gestion de vos événements",
-                    company: "Nom de l'entreprise",
-                    name: "Personne à contacter",
-                    email: "Email",
-                    employees: "Nombre d'employés",
-                    selectRange: "Sélectionner",
-                    message: "Message",
-                    send: "Envoyer"
-                },
-                footer: {
-                    copyright: "© 2025 Team Up. Tous droits réservés.",
-                    madeWith: "Fait avec",
-                    in: "en"
-                }
-            }
-        };
-
-        // Function to switch language
-        function switchLanguage(lang) {
-            // Update active flag
-            document.querySelectorAll('.language-switcher .flag').forEach(flag => {
-                flag.classList.remove('active');
-            });
-            document.querySelector(`.language-switcher img[alt="${lang === 'en' ? 'English' : 'Français'}"]`).classList.add('active');
-
-            const t = translations[lang];
-
-            // Update navigation - Simplified approach
-            const navTexts = {
-                en: ['Features', 'About', 'Pricing', 'Get Started'],
-                fr: ['Fonctionnalités', 'À propos', 'Tarifs', 'Commencer']
-            };
-
-            const navIcons = ['fa-star', 'fa-info-circle', 'fa-tag', 'fa-rocket'];
-            const navLinks = document.querySelectorAll('.nav-links a');
-
-            navLinks.forEach((link, index) => {
-                link.innerHTML = `<i class="fas ${navIcons[index]}"></i> ${navTexts[lang][index]}`;
-            });
-
-            // Update hero section
-            document.querySelector('.hero h1').textContent = t.hero.title;
-            document.querySelector('.hero p').textContent = t.hero.description;
-            document.querySelector('.hero .cta-btn').textContent = t.hero.cta;
-
-            // Update features section
-            document.querySelector('#features .section-title h2').textContent = t.whyChoose.title;
-            document.querySelector('#features .section-title p').textContent = t.whyChoose.subtitle;
-
-            const featureCards = document.querySelectorAll('.feature-card');
-            featureCards[0].querySelector('h3').textContent = t.whyChoose.security.title;
-            featureCards[0].querySelector('p').textContent = t.whyChoose.security.desc;
-            featureCards[1].querySelector('h3').textContent = t.whyChoose.branding.title;
-            featureCards[1].querySelector('p').textContent = t.whyChoose.branding.desc;
-            featureCards[2].querySelector('h3').textContent = t.whyChoose.analytics.title;
-            featureCards[2].querySelector('p').textContent = t.whyChoose.analytics.desc;
-            featureCards[3].querySelector('h3').textContent = t.whyChoose.employee.title;
-            featureCards[3].querySelector('p').textContent = t.whyChoose.employee.desc;
-            featureCards[4].querySelector('h3').textContent = t.whyChoose.mobile.title;
-            featureCards[4].querySelector('p').textContent = t.whyChoose.mobile.desc;
-            featureCards[5].querySelector('h3').textContent = t.whyChoose.cost.title;
-            featureCards[5].querySelector('p').textContent = t.whyChoose.cost.desc;
-
-            // Update about section
-            document.querySelector('#about .section-title h2').textContent = t.about.title;
-            document.querySelector('#about .section-title p').textContent = t.about.subtitle;
-            document.querySelector('.about-content p').textContent = t.about.description;
-
-            // Update pricing section
-            document.querySelector('#pricing .section-title h2').textContent = t.pricing.title;
-            document.querySelector('#pricing .section-title p').textContent = t.pricing.subtitle;
-
-            const pricingCards = document.querySelectorAll('.pricing-card');
-            
-            // Starter plan
-            pricingCards[0].querySelector('h3').textContent = t.pricing.starter.title;
-            pricingCards[0].querySelector('.price').innerHTML = t.pricing.starter.price;
-            const starterFeatures = pricingCards[0].querySelectorAll('.feature-item');
-            t.pricing.starter.features.forEach((feature, index) => {
-                starterFeatures[index].textContent = feature;
-            });
-
-            // Professional plan
-            pricingCards[1].querySelector('h3').textContent = t.pricing.professional.title;
-            pricingCards[1].querySelector('.price').innerHTML = t.pricing.professional.price;
-            const proFeatures = pricingCards[1].querySelectorAll('.feature-item');
-            t.pricing.professional.features.forEach((feature, index) => {
-                proFeatures[index].textContent = feature;
-            });
-
-            // Enterprise plan
-            pricingCards[2].querySelector('h3').textContent = t.pricing.enterprise.title;
-            pricingCards[2].querySelector('.price').textContent = t.pricing.enterprise.price;
-            const enterpriseFeatures = pricingCards[2].querySelectorAll('.feature-item');
-            t.pricing.enterprise.features.forEach((feature, index) => {
-                enterpriseFeatures[index].textContent = feature;
-            });
-
-            // Update contact section
-            document.querySelector('#contact .section-title h2').textContent = t.contact.title;
-            document.querySelector('#contact .section-title p').textContent = t.contact.subtitle;
-            document.querySelector('label[for="company"]').textContent = t.contact.company;
-            document.querySelector('label[for="name"]').textContent = t.contact.name;
-            document.querySelector('label[for="email"]').textContent = t.contact.email;
-            document.querySelector('label[for="employees"]').textContent = t.contact.employees;
-            document.querySelector('select#employees option[value=""]').textContent = t.contact.selectRange;
-            document.querySelector('label[for="message"]').textContent = t.contact.message;
-            document.querySelector('#contactForm button').textContent = t.contact.send;
-
-            // Update footer
-            document.querySelector('.copyright').textContent = t.footer.copyright;
-            const madeInFrance = document.querySelector('.made-in-france');
-            madeInFrance.innerHTML = `${t.footer.madeWith} <i class="fas fa-heart" style="color: #e74c3c;"></i> ${t.footer.in} France <img src="https://flagcdn.com/w40/fr.png" alt="French Flag">`;
-
-            // Update HTML lang attribute
-            document.documentElement.lang = lang;
-        }
-
-        // Set initial language based on browser preference
-        document.addEventListener('DOMContentLoaded', () => {
-            const userLang = navigator.language.startsWith('fr') ? 'fr' : 'en';
-            switchLanguage(userLang);
-        });
-    </script>
+  <header><div class="container"><nav><div class="logo">Team Up</div><ul class="nav-links"><li><a href="#features"><i class="fas fa-star"></i> Features</a></li><li><a href="#about"><i class="fas fa-info-circle"></i> About</a></li><li><a href="#pricing"><i class="fas fa-tag"></i> Pricing</a></li><li><a href="#contact" class="btn"><i class="fas fa-rocket"></i> Get Started</a></li></ul></nav></div></header>
+  <main>
+    <section class="hero"><div class="container"><h1>Transform Your Company Events</h1><p>Empower your employees to create, manage, and participate in company events with our customizable enterprise platform. Available on iOS and Android.</p><a href="#contact" class="cta-btn">Schedule a Demo</a></div></section>
+    <section id="features" class="features"><div class="container"><div class="section-title"><h2>Why Choose Team Up?</h2><p>Streamline event management while building stronger teams</p></div><div class="features-grid"><div class="feature-card"><i class="fas fa-shield-alt"></i><h3>Enterprise Security</h3><p>Seamless integration with your company's authentication system and optional on-premise data storage.</p></div><div class="feature-card"><i class="fas fa-paint-brush"></i><h3>Custom Branding</h3><p>Fully customizable platform with your company's colors, logo, and branded experience.</p></div><div class="feature-card"><i class="fas fa-chart-line"></i><h3>Analytics & Insights</h3><p>Comprehensive statistics and logs to track engagement and measure team building success.</p></div><div class="feature-card"><i class="fas fa-users"></i><h3>Employee-Driven</h3><p>Empower employees to organize events, fostering organic team building and collaboration.</p></div><div class="feature-card"><i class="fas fa-mobile-alt"></i><h3>Mobile First</h3><p>Native apps for both iOS and Android platforms, customized for your company.</p></div><div class="feature-card"><i class="fas fa-dollar-sign"></i><h3>Cost Effective</h3><p>Reduce event management overhead while increasing employee engagement.</p></div></div></div></section>
+    <section class="trusted">
+  <div class="container">
+    <div class="section-title">
+      <h2>Trusted by Leading Companies</h2>
+      <p>10+ companies worked with us.</p>
+    </div>
+  </div>
+</section>
+    <section id="about" class="about"><div class="container"><div class="section-title"><h2>About Team Up</h2><p>Building stronger teams through seamless event management</p></div><div class="about-content"><p>Team Up is an enterprise-grade event management platform designed to strengthen company culture and team bonds. Our platform enables employees to take initiative in organizing events while providing companies with the tools to oversee and analyze team building activities.</p></div></div></section>
+    <section id="pricing" class="pricing"><div class="container"><div class="section-title"><h2>Flexible Enterprise Pricing</h2><p>Choose the perfect plan for your company</p></div><div class="pricing-cards"><div class="pricing-card"><h3>Starter</h3><div class="price">$99<span>/month</span></div><div class="features"><div class="feature-item">Up to 100 Employees</div><div class="feature-item">Basic Analytics</div><div class="feature-item">Standard Support</div><div class="feature-item">Cloud Storage</div></div><a href="#contact" class="cta-btn">Get Started</a></div><div class="pricing-card featured"><h3>Professional</h3><div class="price">$199<span>/month</span></div><div class="features"><div class="feature-item">Up to 500 Employees</div><div class="feature-item">Advanced Analytics</div><div class="feature-item">Priority Support</div><div class="feature-item">Custom Branding</div></div><a href="#contact" class="cta-btn">Get Started</a></div><div class="pricing-card"><h3>Enterprise</h3><div class="price">Custom</div><div class="features"><div class="feature-item">Unlimited Employees</div><div class="feature-item">Custom Integration</div><div class="feature-item">24/7 Support</div><div class="feature-item">On-Premise Option</div></div><a href="#contact" class="cta-btn">Contact Us</a></div></div></div></section>
+    <section id="contact" class="contact"><div class="container"><div class="section-title"><h2>Contact Us</h2><p>Get in touch to transform your company's event management</p></div><form class="contact-form" id="contactForm"><div class="form-group"><label for="company">Company Name</label><input type="text" id="company" name="company" required></div><div class="form-group"><label for="name">Contact Person</label><input type="text" id="name" name="name" required></div><div class="form-group"><label for="email">Email</label><input type="email" id="email" name="email" required></div><div class="form-group"><label for="employees">Number of Employees</label><select id="employees" name="employees" required><option value="">Select range</option><option value="1-100">1-100</option><option value="101-500">101-500</option><option value="501-1000">501-1000</option><option value="1000+">1000+</option></select></div><div class="form-group"><label for="message">Message</label><textarea id="message" name="message" rows="5" required></textarea></div><button type="submit" class="cta-btn">Send Message</button></form></div></section>
+  </main>
+  <footer><div class="container"><div class="footer-content"><div class="logo">Team Up</div><div class="social-links"><a href="#"><i class="fab fa-twitter"></i></a><a href="#"><i class="fab fa-linkedin"></i></a><a href="#"><i class="fab fa-github"></i></a><a href="#"><i class="fab fa-instagram"></i></a></div><div class="copyright">© 2025 Team Up. All rights reserved.</div><div class="made-in-france">Made with <i class="fas fa-heart" style="color:#e74c3c;"></i> in France <img src="https://flagcdn.com/w40/fr.png" alt="French Flag"></div><div class="language-switcher"><img src="https://flagcdn.com/w40/gb.png" alt="English" onclick="switchLanguage('en')" class="flag active"><img src="https://flagcdn.com/w40/fr.png" alt="Français" onclick="switchLanguage('fr')" class="flag"></div></div></div></footer>
+  <script>
+    document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();document.querySelector(a.getAttribute('href')).scrollIntoView({behavior:'smooth'}); }));
+    document.getElementById('contactForm').addEventListener('submit',function(e){e.preventDefault();alert('Thank you for your interest! We will contact you soon.');this.reset();});
+    const translations={
+      en:{
+        hero:{title:'Transform Your Company Events',description:'Empower your employees to create, manage, and participate in company events with our customizable enterprise platform. Available on iOS and Android.',cta:'Schedule a Demo'},
+        whyChoose:{title:'Why Choose Team Up?',subtitle:'Streamline event management while building stronger teams',security:{title:'Enterprise Security',desc:"Seamless integration with your company's authentication system and optional on-premise data storage."},branding:{title:'Custom Branding',desc:"Fully customizable platform with your company's colors, logo, and branded experience."},analytics:{title:'Analytics & Insights',desc:'Comprehensive statistics and logs to track engagement and measure team building success.'},employee:{title:'Employee-Driven',desc:'Empower employees to organize events, fostering organic team building and collaboration.'},mobile:{title:'Mobile First',desc:'Native apps for both iOS and Android platforms, customized for your company.'},cost:{title:'Cost Effective',desc:'Reduce event management overhead while increasing employee engagement.'}},
+        about:{title:'About Team Up',subtitle:'Building stronger teams through seamless event management',description:'Team Up is an enterprise-grade event management platform designed to strengthen company culture and team bonds. Our platform enables employees to take initiative in organizing events while providing companies with the tools to oversee and analyze team building activities.'},
+        pricing:{title:'Flexible Enterprise Pricing',subtitle:'Choose the perfect plan for your company',starter:{title:'Starter',price:'$99/month',features:['Up to 100 Employees','Basic Analytics','Standard Support','Cloud Storage']},professional:{title:'Professional',price:'$199/month',features:['Up to 500 Employees','Advanced Analytics','Priority Support','Custom Branding']},enterprise:{title:'Enterprise',price:'Custom',features:['Unlimited Employees','Custom Integration','24/7 Support','On-Premise Option']}},
+        contact:{title:'Contact Us',subtitle:"Get in touch to transform your company's event management",company:'Company Name',name:'Contact Person',email:'Email',employees:'Number of Employees',selectRange:'Select range',message:'Message',send:'Send Message'},
+        footer:{copyright:'© 2025 Team Up. All rights reserved.',madeWith:'Made with',in:'in'}
+      },
+      fr:{
+        hero:{title:"Transformez vos Événements d'Entreprise",description:"Permettez à vos employés de créer, gérer et participer à des événements d'entreprise avec notre plateforme personnalisable. Disponible sur iOS et Android.",cta:'Demander une Démo'},
+        whyChoose:{title:"Pourquoi Choisir Team Up ?",subtitle:"Simplifiez la gestion des événements tout en renforçant vos équipes",security:{title:"Sécurité Entreprise",desc:"Intégration transparente avec le système d'authentification de votre entreprise et stockage des données sur site en option."},branding:{title:"Personnalisation",desc:"Plateforme entièrement personnalisable avec les couleurs, le logo et l'expérience de marque de votre entreprise."},analytics:{title:"Analyses & Insights",desc:"Statistiques et journaux complets pour suivre l'engagement et mesurer le succès du team building."},employee:{title:"Géré par les Employés",desc:"Permettez aux employés d'organiser des événements, favorisant la collaboration et l'esprit d'équipe."},mobile:{title:"Mobile First",desc:"Applications natives pour iOS et Android, personnalisées pour votre entreprise."},cost:{title:"Coût Efficace",desc:"Réduisez les frais de gestion des événements tout en augmentant l'engagement des employés."}},
+        about:{title:"À propos de Team Up",subtitle:"Construire des équipes plus fortes grâce à une gestion événementielle simplifiée",description:"Team Up est une plateforme de gestion d'événements d'entreprise conçue pour renforcer la culture d'entreprise et les liens d'équipe. Notre plateforme permet aux employés de prendre l'initiative dans l'organisation d'événements tout en fournissant aux entreprises les outils pour superviser et analyser les activités de team building."},
+        pricing:{title:"Tarification Flexible",subtitle:"Choisissez le forfait idéal pour votre entreprise",starter:{title:"Débutant",price:"99€/mois",features:["Jusqu'à 100 employés","Analyses de base","Support standard","Stockage cloud"]},professional:{title:"Professionnel",price:"199€/mois",features:["Jusqu'à 500 employés","Analyses avancées","Support prioritaire","Personnalisation"]},enterprise:{title:"Entreprise",price:"Sur mesure",features:["Employés illimités","Intégration personnalisée","Support 24/7","Option sur site"]}},
+        contact:{title:"Contactez-nous",subtitle:"Contactez-nous pour transformer la gestion de vos événements",company:"Nom de l'entreprise",name:"Personne à contacter",email:"Email",employees:"Nombre d'employés",selectRange:"Sélectionner",message:"Message",send:"Envoyer"},
+        footer:{copyright:"© 2025 Team Up. Tous droits réservés.",madeWith:"Fait avec",in:"en"}
+      }
+    };
+    function switchLanguage(lang){document.querySelectorAll('.language-switcher .flag').forEach(f=>f.classList.remove('active'));document.querySelector(`.language-switcher img[alt="${lang==='en'?'English':'Français'}"]`).classList.add('active');const t=translations[lang];['Features','About','Pricing','Get Started'].forEach((txt,i)=>document.querySelectorAll('.nav-links a')[i].innerHTML=`<i class="fas fa-${['star','info-circle','tag','rocket'][i']}"></i> ${lang==='en'?['Features','About','Pricing','Get Started'][i]:['Fonctionnalités','À propos','Tarifs','Commencer'][i]}`);document.documentElement.lang=lang;}
+    document.addEventListener('DOMContentLoaded',()=>switchLanguage(navigator.language.startsWith('fr')?'fr':'en'));
+  </script>
 </body>
 </html>
