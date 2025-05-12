@@ -3,7 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Team Up - Enterprise Event Management</title>
+  <title>Team Up - Enterprise Event Management Platform</title>
+  <meta name="description" content="Transform your company events with Team Up, a customizable enterprise platform for event management, employee engagement, and team building. Available on iOS & Android.">
+  <meta name="keywords" content="enterprise event management, team building platform, company events, employee engagement, corporate events, event app">
+
+  <meta property="og:title" content="Team Up - Enterprise Event Management Platform">
+  <meta property="og:description" content="Streamline event management and boost employee engagement with Team Up. Discover features like custom branding, analytics, and mobile apps.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="YOUR_WEBSITE_URL_HERE"> <meta property="og:image" content="YOUR_PREVIEW_IMAGE_URL_HERE"> <meta property="og:image:alt" content="Team Up Platform Interface Preview">
+  <meta property="og:site_name" content="Team Up">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Team Up - Enterprise Event Management Platform">
+  <meta name="twitter:description" content="Transform company events and foster team spirit with Team Up. Customizable, secure, and mobile-first.">
+  <meta name="twitter:image" content="YOUR_TWITTER_IMAGE_URL_HERE"> <meta name="twitter:image:alt" content="Team Up - Event Management Solution">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <style>
     /* General reset and base styles */
@@ -160,7 +178,7 @@
       transform:translateY(-10px); 
     }
     .pricing-card.featured::before { 
-      content:"Most Popular"; 
+      content:"Most Popular"; /* This text is not directly accessible to screen readers. Consider adding sr-only text if crucial. */
       position:absolute; 
       top:20px; 
       right:-35px; 
@@ -263,18 +281,7 @@
       flex-wrap:wrap; 
       gap:1rem; 
     }
-    .social-links { 
-      display:flex; 
-      gap:1rem; 
-    }
-    .social-links a { 
-      color:white; 
-      font-size:1.5rem; 
-      transition:color .3s ease; 
-    }
-    .social-links a:hover { 
-      color:#3498db; 
-    }
+    /* .social-links removed */
     .made-in-france { 
       display:flex; 
       align-items:center; 
@@ -333,6 +340,22 @@
     /* @media(max-width:768px){ .nav-links { display:none; flex-direction:column; ... } .nav-links.active { display:flex; } .menu-toggle { display:block; } } */
 
   </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Team Up",
+    "url": "YOUR_WEBSITE_URL_HERE", // Replace with your actual URL
+    "logo": "YOUR_LOGO_URL_HERE", // Replace with a URL to your logo
+    "description": "Enterprise event management platform to empower employees, create, manage, and participate in company events.",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "Customer Service",
+      "email": "YOUR_CONTACT_EMAIL_HERE" // Replace with your contact email
+    }
+    // "sameAs": [] // Removed social media links
+  }
+  </script>
 </head>
 <body>
   <header>
@@ -480,17 +503,11 @@
     <div class="container">
       <div class="footer-content">
         <div class="logo">Team Up</div>
-        <div class="social-links">
-          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-          <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
-          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-        </div>
         <div class="copyright">© 2025 Team Up. All rights reserved.</div>
-        <div class="made-in-france">Made with <i class="fas fa-heart" style="color:#e74c3c;"></i> in France <img src="https://flagcdn.com/w40/fr.png" alt="French Flag"></div>
+        <div class="made-in-france">Made with <i class="fas fa-heart" style="color:#e74c3c;" aria-hidden="true"></i> in France <img src="https://flagcdn.com/w40/fr.png" alt="Flag of France, indicating the origin of Team Up."></div>
         <div class="language-switcher">
-          <img src="https://flagcdn.com/w40/gb.png" alt="English" onclick="switchLanguage('en')" class="flag active" title="Switch to English">
-          <img src="https://flagcdn.com/w40/fr.png" alt="Français" onclick="switchLanguage('fr')" class="flag" title="Passer au français">
+          <img src="https://flagcdn.com/w40/gb.png" alt="English language" onclick="switchLanguage('en')" class="flag active" title="Switch to English" aria-label="Switch to English language">
+          <img src="https://flagcdn.com/w40/fr.png" alt="Langue française" onclick="switchLanguage('fr')" class="flag" title="Passer au français" aria-label="Passer à la langue française">
         </div>
       </div>
     </div>
@@ -560,7 +577,7 @@
 
       // Update active flag style
       document.querySelectorAll('.language-switcher .flag').forEach(f => f.classList.remove('active'));
-      const activeFlagSelector = `.language-switcher img[alt="${lang === 'en' ? 'English' : 'Français'}"]`;
+      const activeFlagSelector = `.language-switcher img[alt="${lang === 'en' ? 'English language' : 'Langue française'}"]`; // Match updated alt text
       const activeFlag = document.querySelector(activeFlagSelector);
       if (activeFlag) {
         activeFlag.classList.add('active');
@@ -703,7 +720,7 @@
         setText('.copyright', t.footer.copyright);
         const madeInFranceEl = document.querySelector('.made-in-france');
         if (madeInFranceEl) { // Reconstruct the "Made with..." part for translation
-          madeInFranceEl.innerHTML = `${t.footer.madeWith} <i class="fas fa-heart" style="color:#e74c3c;"></i> ${t.footer.in} France <img src="https://flagcdn.com/w40/fr.png" alt="French Flag">`;
+          madeInFranceEl.innerHTML = `${t.footer.madeWith} <i class="fas fa-heart" style="color:#e74c3c;" aria-hidden="true"></i> ${t.footer.in} France <img src="https://flagcdn.com/w40/fr.png" alt="Flag of France, indicating the origin of Team Up.">`;
         }
       }
     }
