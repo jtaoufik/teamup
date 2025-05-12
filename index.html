@@ -344,7 +344,7 @@
   {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "name": "TeamUP", // Updated name
+    "name": "TeamUP", 
     "url": "YOUR_WEBSITE_URL_HERE", 
     "logo": "YOUR_LOGO_URL_HERE", 
     "description": "Enterprise event management platform to empower employees, create, manage, and participate in company events.",
@@ -360,7 +360,8 @@
   <header>
     <div class="container">
       <nav>
-        <div class="logo">TeamUP</div> <ul class="nav-links">
+        <div class="logo">TeamUP</div> 
+        <ul class="nav-links">
           <li><a href="#features"><i class="fas fa-star"></i> Features</a></li>
           <li><a href="#about"><i class="fas fa-info-circle"></i> About</a></li>
           <li><a href="#pricing"><i class="fas fa-tag"></i> Pricing</a></li>
@@ -382,7 +383,8 @@
     <section id="features" class="features">
       <div class="container">
         <div class="section-title">
-          <h2>Why Choose TeamUP?</h2> <p>Streamline event management while building stronger teams</p>
+          <h2>Why Choose TeamUP?</h2> 
+          <p>Streamline event management while building stronger teams</p>
         </div>
         <div class="features-grid">
           <div class="feature-card"><i class="fas fa-shield-alt"></i><h3>Enterprise Security</h3><p>Seamless integration with your company's authentication system and optional on-premise data storage.</p></div>
@@ -407,7 +409,8 @@
     <section id="about" class="about">
       <div class="container">
         <div class="section-title">
-          <h2>About TeamUP</h2> <p>Building stronger teams through seamless event management</p>
+          <h2>About TeamUP</h2> 
+          <p>Building stronger teams through seamless event management</p>
         </div>
         <div class="about-content" style="text-align: center; max-width: 800px; margin: 0 auto;">
           <p>TeamUP is an enterprise-grade event management platform designed to strengthen company culture and team bonds. Our platform enables employees to take initiative in organizing events while providing companies with the tools to oversee and analyze team building activities.</p>
@@ -473,8 +476,7 @@
           </div>
           <div class="form-group">
             <label for="email">Email</label>
-            <input type="email" id="email" name="email" required>
-          </div>
+            <input type="email" id="email" name="email" required> </div>
           <div class="form-group">
             <label for="employees">Number of Employees</label>
             <select id="employees" name="employees" required>
@@ -491,7 +493,7 @@
           </div>
           <button type="submit" class="cta-btn">Send Message</button>
         </form>
-        <p id="form-status" style="text-align: center; margin-top: 1rem;"></p>
+        <p id="form-status" style="text-align: center; margin-top: 1rem; font-weight: bold;"></p>
       </div>
     </section>
   </main>
@@ -499,7 +501,9 @@
   <footer>
     <div class="container">
       <div class="footer-content">
-        <div class="logo">TeamUP</div> <div class="copyright">© 2025 TeamUP. All rights reserved.</div> <div class="made-in-france">Made with <i class="fas fa-heart" style="color:#e74c3c;" aria-hidden="true"></i> in France <img src="https://flagcdn.com/w40/fr.png" alt="Flag of France, indicating the origin of TeamUP."></div>
+        <div class="logo">TeamUP</div> 
+        <div class="copyright">© 2025 TeamUP. All rights reserved.</div> 
+        <div class="made-in-france">Made with <i class="fas fa-heart" style="color:#e74c3c;" aria-hidden="true"></i> in France <img src="https://flagcdn.com/w40/fr.png" alt="Flag of France, indicating the origin of TeamUP."></div>
         <div class="language-switcher">
           <img src="https://flagcdn.com/w40/gb.png" alt="English language" onclick="switchLanguage('en')" class="flag active" title="Switch to English" aria-label="Switch to English language">
           <img src="https://flagcdn.com/w40/fr.png" alt="Langue française" onclick="switchLanguage('fr')" class="flag" title="Passer au français" aria-label="Passer à la langue française">
@@ -551,42 +555,88 @@
     const contactForm = document.getElementById('contactForm');
     const formStatus = document.getElementById('form-status');
 
-    async function handleSubmit(event) {
-      event.preventDefault(); // Prevent default browser submission
-      const currentLang = document.documentElement.lang || 'en';
-      const formData = new FormData(event.target);
-
-      try {
-        const response = await fetch(event.target.action, {
-          method: contactForm.method,
-          body: formData,
-          headers: {
-            'Accept': 'application/json'
-          }
-        });
-
-        if (response.ok) {
-          formStatus.textContent = translations[currentLang].contact.submitSuccess;
-          formStatus.style.color = 'green';
-          contactForm.reset(); // Reset form fields
-        } else {
-          // Try to get more specific error from Formspree response if available
-          response.json().then(data => {
-            if (data.errors && data.errors.length > 0) {
-                formStatus.textContent = data.errors.map(error => error.message).join(", ");
-            } else {
-                formStatus.textContent = translations[currentLang].contact.submitError;
-            }
-            formStatus.style.color = 'red';
-          })
-        }
-      } catch (error) {
-        formStatus.textContent = translations[currentLang].contact.submitError;
-        formStatus.style.color = 'red';
-      }
-    }
-
     if (contactForm) {
+      // Check if the Formspree URL is still the placeholder
+      if (contactForm.action.includes("YOUR_FORMSPREE_ENDPOINT_HERE")) {
+        console.warn("FORMSPREE DEBUG: The Formspree endpoint URL in the HTML form's 'action' attribute needs to be replaced with your actual Formspree URL for the contact form to work.");
+        if(formStatus) {
+            formStatus.textContent = "Contact form is not configured. Please replace placeholder URL.";
+            formStatus.style.color = 'orange';
+        }
+      }
+
+      async function handleSubmit(event) {
+        event.preventDefault(); // Prevent default browser submission
+        const currentLang = document.documentElement.lang || 'en';
+        const formData = new FormData(event.target);
+
+        // Clear previous status messages
+        if(formStatus) formStatus.textContent = ''; 
+
+        // Simple client-side validation check (optional, Formspree does its own)
+        if (!event.target.checkValidity()) {
+            if(formStatus) {
+                formStatus.textContent = "Please fill out all required fields."; // Or use a translated string
+                formStatus.style.color = 'red';
+            }
+            return;
+        }
+        
+        // Check again if the Formspree URL is still the placeholder before attempting to send
+        if (event.target.action.includes("YOUR_FORMSPREE_ENDPOINT_HERE")) {
+            if(formStatus) {
+                formStatus.textContent = "Contact form is not configured correctly. Administrator: Please update the Formspree endpoint URL.";
+                formStatus.style.color = 'red';
+            }
+            console.error("Formspree submission blocked: Placeholder URL is still in use.");
+            return; 
+        }
+
+
+        try {
+          const response = await fetch(event.target.action, {
+            method: contactForm.method,
+            body: formData,
+            headers: {
+              'Accept': 'application/json' // Important for Formspree to return JSON
+            }
+          });
+
+          if (response.ok) {
+            if(formStatus) {
+                formStatus.textContent = translations[currentLang].contact.submitSuccess;
+                formStatus.style.color = 'green';
+            }
+            contactForm.reset(); // Reset form fields
+          } else {
+            // Try to get more specific error from Formspree response if available
+            response.json().then(data => {
+              if (formStatus) {
+                if (data.errors && data.errors.length > 0) {
+                    formStatus.textContent = data.errors.map(error => error.message).join(", ");
+                } else if (data.error) { // Some Formspree errors come in a general 'error' field
+                    formStatus.textContent = data.error;
+                }
+                 else {
+                    formStatus.textContent = translations[currentLang].contact.submitError;
+                }
+                formStatus.style.color = 'red';
+              }
+            }).catch(() => { // Catch if response.json() fails (e.g. not valid JSON)
+                if(formStatus) {
+                    formStatus.textContent = translations[currentLang].contact.submitError;
+                    formStatus.style.color = 'red';
+                }
+            });
+          }
+        } catch (error) { // Catch network errors or other issues with fetch
+          if(formStatus) {
+            formStatus.textContent = translations[currentLang].contact.submitError;
+            formStatus.style.color = 'red';
+          }
+          console.error("Form submission error:", error);
+        }
+      }
       contactForm.addEventListener("submit", handleSubmit);
     }
     
@@ -617,18 +667,30 @@
       
       // Update company name TeamUP in relevant places
       document.querySelectorAll('.logo').forEach(el => el.innerText = "TeamUP");
-      if(t.og) { // If OpenGraph translations exist
-          const ogSiteName = document.querySelector('meta[property="og:site_name"]');
-          if(ogSiteName) ogSiteName.setAttribute('content', "TeamUP");
+      
+      const ogSiteName = document.querySelector('meta[property="og:site_name"]');
+      if(ogSiteName) ogSiteName.setAttribute('content', "TeamUP");
+      
+      const jsonLdScript = document.querySelector('script[type="application/ld+json"]');
+      if (jsonLdScript) {
+          try {
+              const jsonData = JSON.parse(jsonLdScript.textContent);
+              jsonData.name = "TeamUP";
+              jsonLdScript.textContent = JSON.stringify(jsonData, null, 2);
+          } catch (e) {
+              console.error("Error updating JSON-LD name:", e);
+          }
       }
+
+
       if (t.whyChoose) setText('#features .section-title h2', t.whyChoose.title);
       if (t.about) setText('#about .section-title h2', t.about.title);
       if (t.footer && t.footer.copyright) {
           const copyrightElement = document.querySelector('.copyright');
-          if (copyrightElement) copyrightElement.innerText = t.footer.copyright.replace('Team Up', 'TeamUP');
+          if (copyrightElement) copyrightElement.innerText = t.footer.copyright; // Assumes "TeamUP" is already in the translation
       }
-      const madeInFranceEl = document.querySelector('.made-in-france img');
-      if (madeInFranceEl) madeInFranceEl.setAttribute('alt', `Flag of France, indicating the origin of TeamUP.`);
+      const madeInFranceElImg = document.querySelector('.made-in-france img');
+      if (madeInFranceElImg) madeInFranceElImg.setAttribute('alt', `Flag of France, indicating the origin of TeamUP.`);
 
 
       const navLinks = document.querySelectorAll('.nav-links a');
@@ -649,7 +711,7 @@
       }
 
       if (t.whyChoose) {
-        // setText('#features .section-title h2', t.whyChoose.title); // Already updated above
+        // setText('#features .section-title h2', t.whyChoose.title); // Already updated by specific TeamUP logic
         setText('#features .section-title p', t.whyChoose.subtitle);
         
         const featureCards = document.querySelectorAll('#features .feature-card');
@@ -668,7 +730,7 @@
       }
 
       if (t.about) {
-        // setText('#about .section-title h2', t.about.title); // Already updated above
+        // setText('#about .section-title h2', t.about.title); // Already updated by specific TeamUP logic
         setText('#about .section-title p', t.about.subtitle);
         setText('#about .about-content p', t.about.description);
       }
@@ -721,19 +783,25 @@
         setText('label[for="message"]', t.contact.message);
         setText('#contactForm button[type="submit"]', t.contact.send);
         // Clear previous form status message on language switch
-        if(formStatus) formStatus.textContent = ''; 
+        const formStatusP = document.getElementById('form-status');
+        if(formStatusP) formStatusP.textContent = ''; 
       }
 
       if (t.footer) {
-        // setText('.copyright', t.footer.copyright); // Already updated above
+        // setText('.copyright', t.footer.copyright); // Already updated by specific TeamUP logic
         const madeInFranceContainer = document.querySelector('.made-in-france');
         if (madeInFranceContainer) { 
           const heartIcon = madeInFranceContainer.querySelector('.fa-heart');
           const flagImg = madeInFranceContainer.querySelector('img');
-          madeInFranceContainer.childNodes[0].nodeValue = `${t.footer.madeWith} `; // Text before heart
-          if (heartIcon && flagImg) { // Ensure elements exist
-             // Text after heart, before flag
-            flagImg.previousSibling.nodeValue = ` ${t.footer.in} France `;
+          // Ensure the text nodes exist before trying to set their value
+          if (madeInFranceContainer.childNodes.length > 0 && madeInFranceContainer.childNodes[0].nodeType === Node.TEXT_NODE) {
+            madeInFranceContainer.childNodes[0].nodeValue = `${t.footer.madeWith} `; // Text before heart
+          }
+          if (heartIcon && flagImg && flagImg.previousSibling && flagImg.previousSibling.nodeType === Node.TEXT_NODE) {
+            flagImg.previousSibling.nodeValue = ` ${t.footer.in} France `; // Text after heart, before flag
+          } else if (heartIcon && flagImg) { // If the text node doesn't exist, create it (less ideal, structure should be stable)
+            const textNode = document.createTextNode(` ${t.footer.in} France `);
+            madeInFranceContainer.insertBefore(textNode, flagImg);
           }
         }
       }
