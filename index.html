@@ -345,13 +345,13 @@
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "TeamUP", 
-    "url": "YOUR_WEBSITE_URL_HERE", 
-    "logo": "YOUR_LOGO_URL_HERE", 
+    "url": "YOUR_WEBSITE_URL_HERE", // Replace with your actual URL
+    "logo": "YOUR_LOGO_URL_HERE", // Replace with a URL to your logo
     "description": "Enterprise event management platform to empower employees, create, manage, and participate in company events.",
     "contactPoint": {
       "@type": "ContactPoint",
       "contactType": "Customer Service",
-      "email": "YOUR_CONTACT_EMAIL_HERE" 
+      "email": "YOUR_CONTACT_EMAIL_HERE" // Replace with your contact email
     }
   }
   </script>
@@ -465,7 +465,7 @@
           <h2>Contact Us</h2>
           <p>Get in touch to transform your company's event management</p>
         </div>
-        <form class="contact-form" id="contactForm" action="YOUR_FORMSPREE_ENDPOINT_HERE" method="POST">
+        <form class="contact-form" id="contactForm" action="https://formspree.io/f/mkgrqnbb" method="POST">
           <div class="form-group">
             <label for="company">Company Name</label>
             <input type="text" id="company" name="company" required>
@@ -556,7 +556,7 @@
     const formStatus = document.getElementById('form-status');
 
     if (contactForm) {
-      // Check if the Formspree URL is still the placeholder
+      // Check if the Formspree URL is still the placeholder (This check is mainly for development/debugging)
       if (contactForm.action.includes("YOUR_FORMSPREE_ENDPOINT_HERE")) {
         console.warn("FORMSPREE DEBUG: The Formspree endpoint URL in the HTML form's 'action' attribute needs to be replaced with your actual Formspree URL for the contact form to work.");
         if(formStatus) {
@@ -582,7 +582,7 @@
             return;
         }
         
-        // Check again if the Formspree URL is still the placeholder before attempting to send
+        // Block submission if placeholder URL is still present
         if (event.target.action.includes("YOUR_FORMSPREE_ENDPOINT_HERE")) {
             if(formStatus) {
                 formStatus.textContent = "Contact form is not configured correctly. Administrator: Please update the Formspree endpoint URL.";
@@ -594,6 +594,7 @@
 
 
         try {
+          // Send data to Formspree
           const response = await fetch(event.target.action, {
             method: contactForm.method,
             body: formData,
@@ -602,27 +603,29 @@
             }
           });
 
+          // Handle Formspree response
           if (response.ok) {
             if(formStatus) {
                 formStatus.textContent = translations[currentLang].contact.submitSuccess;
                 formStatus.style.color = 'green';
             }
-            contactForm.reset(); // Reset form fields
+            contactForm.reset(); // Reset form fields on success
           } else {
-            // Try to get more specific error from Formspree response if available
+            // Try to parse error details from Formspree response
             response.json().then(data => {
               if (formStatus) {
                 if (data.errors && data.errors.length > 0) {
-                    formStatus.textContent = data.errors.map(error => error.message).join(", ");
-                } else if (data.error) { // Some Formspree errors come in a general 'error' field
+                    // Display specific field errors from Formspree
+                    formStatus.textContent = data.errors.map(error => `${error.field}: ${error.message}`).join(", ");
+                } else if (data.error) { // Display general error from Formspree
                     formStatus.textContent = data.error;
                 }
-                 else {
+                 else { // Fallback error message
                     formStatus.textContent = translations[currentLang].contact.submitError;
                 }
                 formStatus.style.color = 'red';
               }
-            }).catch(() => { // Catch if response.json() fails (e.g. not valid JSON)
+            }).catch(() => { // Catch if response.json() fails 
                 if(formStatus) {
                     formStatus.textContent = translations[currentLang].contact.submitError;
                     formStatus.style.color = 'red';
@@ -634,9 +637,10 @@
             formStatus.textContent = translations[currentLang].contact.submitError;
             formStatus.style.color = 'red';
           }
-          console.error("Form submission error:", error);
+          console.error("Form submission network/fetch error:", error);
         }
       }
+      // Attach the submit handler to the form
       contactForm.addEventListener("submit", handleSubmit);
     }
     
@@ -784,7 +788,10 @@
         setText('#contactForm button[type="submit"]', t.contact.send);
         // Clear previous form status message on language switch
         const formStatusP = document.getElementById('form-status');
-        if(formStatusP) formStatusP.textContent = ''; 
+        // Only clear if it's not the configuration warning
+        if(formStatusP && !formStatusP.textContent.includes("not configured")) {
+            formStatusP.textContent = ''; 
+        }
       }
 
       if (t.footer) {
@@ -807,6 +814,7 @@
       }
     }
 
+    // Set initial language based on browser settings or default to 'en'
     document.addEventListener('DOMContentLoaded', () => {
       const browserLang = navigator.language || navigator.userLanguage;
       const initialLang = browserLang.startsWith('fr') ? 'fr' : 'en';
