@@ -11,16 +11,20 @@
   <meta property="og:description" content="Streamline event management and boost employee engagement with Team Up. Discover features like custom branding, analytics, and mobile apps.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="YOUR_WEBSITE_URL_HERE"> <meta property="og:image" content="YOUR_PREVIEW_IMAGE_URL_HERE"> <meta property="og:image:alt" content="Team Up Platform Interface Preview">
-  <meta property="og:site_name" content="Team Up">
+  <meta property="og:site_name" content="TeamUP">
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Team Up - Enterprise Event Management Platform">
-  <meta name="twitter:description" content="Transform company events and foster team spirit with Team Up. Customizable, secure, and mobile-first.">
-  <meta name="twitter:image" content="YOUR_TWITTER_IMAGE_URL_HERE"> <meta name="twitter:image:alt" content="Team Up - Event Management Solution">
+  <meta name="twitter:description" content="Transform company events and foster team spirit with TeamUP. Customizable, secure, and mobile-first.">
+  <meta name="twitter:image" content="YOUR_TWITTER_IMAGE_URL_HERE"> <meta name="twitter:image:alt" content="TeamUP - Event Management Solution">
+
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <style>
@@ -58,7 +62,8 @@
       align-items:center; 
     }
     .logo { 
-      font-size:1.8rem; 
+      font-family: 'Satisfy', cursive; /* Apply Satisfy font */
+      font-size:2.2rem; /* Adjusted size for the new font */
       font-weight:bold; 
     }
     .nav-links { 
@@ -178,7 +183,7 @@
       transform:translateY(-10px); 
     }
     .pricing-card.featured::before { 
-      content:"Most Popular"; /* This text is not directly accessible to screen readers. Consider adding sr-only text if crucial. */
+      content:"Most Popular"; 
       position:absolute; 
       top:20px; 
       right:-35px; 
@@ -198,7 +203,7 @@
       color:#3498db; 
       margin-bottom:2rem; 
     }
-    .pricing-card .price span { /* For styling "/month" or "/mois" */
+    .pricing-card .price span { 
       font-size:1rem; 
       color:#777; 
     }
@@ -207,7 +212,7 @@
       border-bottom:1px solid #eee; 
     }
     .pricing-card .feature-item:last-child {
-        border-bottom: none; /* Remove border from last item */
+        border-bottom: none; 
     }
     /* Trusted by section styles */
     .trusted { 
@@ -281,7 +286,6 @@
       flex-wrap:wrap; 
       gap:1rem; 
     }
-    /* .social-links removed */
     .made-in-france { 
       display:flex; 
       align-items:center; 
@@ -289,7 +293,7 @@
       font-size:.9rem; 
     }
     .made-in-france img {
-        width:20px; /* Control flag size */
+        width:20px; 
         height:auto;
         margin-left:5px;
     }
@@ -297,7 +301,7 @@
       display:flex; 
       gap:10px; 
       justify-content:center; 
-      margin-top:1rem; /* Provides some space if footer items stack */
+      margin-top:1rem; 
     }
     .language-switcher .flag { 
       width:30px; 
@@ -305,7 +309,7 @@
       cursor:pointer; 
       opacity:.6; 
       transition:all .3s ease; 
-      border-radius: 3px; /* Slightly rounded flags */
+      border-radius: 3px; 
     }
     .language-switcher .flag:hover { 
       opacity:1; 
@@ -319,8 +323,7 @@
     /* Responsive adjustments */
     @media(max-width:768px){ 
       .nav-links { 
-        /* Example: Stack nav links or implement hamburger menu logic here */
-        /* For now, let's just make them wrap and center for simplicity */
+        /* Basic stacking for mobile nav, consider a hamburger menu for better UX */
         /* flex-direction:column; 
         align-items:center; 
         gap: 0.5rem; 
@@ -332,28 +335,24 @@
         text-align:center; 
       } 
       .pricing-cards { 
-        grid-template-columns:1fr; /* Stack pricing cards on smaller screens */
+        grid-template-columns:1fr; 
       } 
     }
-    /* Hamburger menu toggle - initially hidden on desktop */
-    /* .menu-toggle { display:none; font-size:1.5rem; color:white; cursor:pointer; } */
-    /* @media(max-width:768px){ .nav-links { display:none; flex-direction:column; ... } .nav-links.active { display:flex; } .menu-toggle { display:block; } } */
 
   </style>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "name": "Team Up",
-    "url": "YOUR_WEBSITE_URL_HERE", // Replace with your actual URL
-    "logo": "YOUR_LOGO_URL_HERE", // Replace with a URL to your logo
+    "name": "TeamUP", // Updated name
+    "url": "YOUR_WEBSITE_URL_HERE", 
+    "logo": "YOUR_LOGO_URL_HERE", 
     "description": "Enterprise event management platform to empower employees, create, manage, and participate in company events.",
     "contactPoint": {
       "@type": "ContactPoint",
       "contactType": "Customer Service",
-      "email": "YOUR_CONTACT_EMAIL_HERE" // Replace with your contact email
+      "email": "YOUR_CONTACT_EMAIL_HERE" 
     }
-    // "sameAs": [] // Removed social media links
   }
   </script>
 </head>
@@ -361,8 +360,7 @@
   <header>
     <div class="container">
       <nav>
-        <div class="logo">Team Up</div>
-        <ul class="nav-links">
+        <div class="logo">TeamUP</div> <ul class="nav-links">
           <li><a href="#features"><i class="fas fa-star"></i> Features</a></li>
           <li><a href="#about"><i class="fas fa-info-circle"></i> About</a></li>
           <li><a href="#pricing"><i class="fas fa-tag"></i> Pricing</a></li>
@@ -384,8 +382,7 @@
     <section id="features" class="features">
       <div class="container">
         <div class="section-title">
-          <h2>Why Choose Team Up?</h2>
-          <p>Streamline event management while building stronger teams</p>
+          <h2>Why Choose TeamUP?</h2> <p>Streamline event management while building stronger teams</p>
         </div>
         <div class="features-grid">
           <div class="feature-card"><i class="fas fa-shield-alt"></i><h3>Enterprise Security</h3><p>Seamless integration with your company's authentication system and optional on-premise data storage.</p></div>
@@ -410,11 +407,10 @@
     <section id="about" class="about">
       <div class="container">
         <div class="section-title">
-          <h2>About Team Up</h2>
-          <p>Building stronger teams through seamless event management</p>
+          <h2>About TeamUP</h2> <p>Building stronger teams through seamless event management</p>
         </div>
         <div class="about-content" style="text-align: center; max-width: 800px; margin: 0 auto;">
-          <p>Team Up is an enterprise-grade event management platform designed to strengthen company culture and team bonds. Our platform enables employees to take initiative in organizing events while providing companies with the tools to oversee and analyze team building activities.</p>
+          <p>TeamUP is an enterprise-grade event management platform designed to strengthen company culture and team bonds. Our platform enables employees to take initiative in organizing events while providing companies with the tools to oversee and analyze team building activities.</p>
         </div>
       </div>
     </section>
@@ -466,7 +462,7 @@
           <h2>Contact Us</h2>
           <p>Get in touch to transform your company's event management</p>
         </div>
-        <form class="contact-form" id="contactForm">
+        <form class="contact-form" id="contactForm" action="YOUR_FORMSPREE_ENDPOINT_HERE" method="POST">
           <div class="form-group">
             <label for="company">Company Name</label>
             <input type="text" id="company" name="company" required>
@@ -495,6 +491,7 @@
           </div>
           <button type="submit" class="cta-btn">Send Message</button>
         </form>
+        <p id="form-status" style="text-align: center; margin-top: 1rem;"></p>
       </div>
     </section>
   </main>
@@ -502,9 +499,7 @@
   <footer>
     <div class="container">
       <div class="footer-content">
-        <div class="logo">Team Up</div>
-        <div class="copyright">© 2025 Team Up. All rights reserved.</div>
-        <div class="made-in-france">Made with <i class="fas fa-heart" style="color:#e74c3c;" aria-hidden="true"></i> in France <img src="https://flagcdn.com/w40/fr.png" alt="Flag of France, indicating the origin of Team Up."></div>
+        <div class="logo">TeamUP</div> <div class="copyright">© 2025 TeamUP. All rights reserved.</div> <div class="made-in-france">Made with <i class="fas fa-heart" style="color:#e74c3c;" aria-hidden="true"></i> in France <img src="https://flagcdn.com/w40/fr.png" alt="Flag of France, indicating the origin of TeamUP."></div>
         <div class="language-switcher">
           <img src="https://flagcdn.com/w40/gb.png" alt="English language" onclick="switchLanguage('en')" class="flag active" title="Switch to English" aria-label="Switch to English language">
           <img src="https://flagcdn.com/w40/fr.png" alt="Langue française" onclick="switchLanguage('fr')" class="flag" title="Passer au français" aria-label="Passer à la langue française">
@@ -533,89 +528,111 @@
       en: {
         nav: { features: "Features", about: "About", pricing: "Pricing", getStarted: "Get Started" },
         hero: { title: 'Transform Your Company Events', description: 'Empower your employees to create, manage, and participate in company events with our customizable enterprise platform. Available on iOS and Android.', cta: 'Schedule a Demo' },
-        whyChoose: { title: 'Why Choose Team Up?', subtitle: 'Streamline event management while building stronger teams', security: { title: 'Enterprise Security', desc: "Seamless integration with your company's authentication system and optional on-premise data storage." }, branding: { title: 'Custom Branding', desc: "Fully customizable platform with your company's colors, logo, and branded experience." }, analytics: { title: 'Analytics & Insights', desc: 'Comprehensive statistics and logs to track engagement and measure team building success.' }, employee: { title: 'Employee-Driven', desc: 'Empower employees to organize events, fostering organic team building and collaboration.' }, mobile: { title: 'Mobile First', desc: 'Native apps for both iOS and Android platforms, customized for your company.' }, cost: { title: 'Cost Effective', desc: 'Reduce event management overhead while increasing employee engagement.' } },
+        whyChoose: { title: 'Why Choose TeamUP?', subtitle: 'Streamline event management while building stronger teams', security: { title: 'Enterprise Security', desc: "Seamless integration with your company's authentication system and optional on-premise data storage." }, branding: { title: 'Custom Branding', desc: "Fully customizable platform with your company's colors, logo, and branded experience." }, analytics: { title: 'Analytics & Insights', desc: 'Comprehensive statistics and logs to track engagement and measure team building success.' }, employee: { title: 'Employee-Driven', desc: 'Empower employees to organize events, fostering organic team building and collaboration.' }, mobile: { title: 'Mobile First', desc: 'Native apps for both iOS and Android platforms, customized for your company.' }, cost: { title: 'Cost Effective', desc: 'Reduce event management overhead while increasing employee engagement.' } },
         trusted: { title: "Trusted by Leading Companies", subtitle: "10+ companies worked with us." },
-        about: { title: 'About Team Up', subtitle: 'Building stronger teams through seamless event management', description: 'Team Up is an enterprise-grade event management platform designed to strengthen company culture and team bonds. Our platform enables employees to take initiative in organizing events while providing companies with the tools to oversee and analyze team building activities.' },
+        about: { title: 'About TeamUP', subtitle: 'Building stronger teams through seamless event management', description: 'TeamUP is an enterprise-grade event management platform designed to strengthen company culture and team bonds. Our platform enables employees to take initiative in organizing events while providing companies with the tools to oversee and analyze team building activities.' },
         pricing: { title: 'Flexible Enterprise Pricing', subtitle: 'Choose the perfect plan for your company', starter: { title: 'Starter', price: '$99/month', features: ['Up to 100 Employees', 'Basic Analytics', 'Standard Support', 'Cloud Storage'], cta: 'Get Started' }, professional: { title: 'Professional', price: '$199/month', features: ['Up to 500 Employees', 'Advanced Analytics', 'Priority Support', 'Custom Branding'], cta: 'Get Started' }, enterprise: { title: 'Enterprise', price: 'Custom', features: ['Unlimited Employees', 'Custom Integration', '24/7 Support', 'On-Premise Option'], cta: 'Contact Us' } },
-        contact: { title: 'Contact Us', subtitle: "Get in touch to transform your company's event management", company: 'Company Name', name: 'Contact Person', email: 'Email', employees: 'Number of Employees', selectRange: 'Select range', message: 'Message', send: 'Send Message', submitSuccess: 'Thank you for your interest! We will contact you soon.' },
-        footer: { copyright: '© 2025 Team Up. All rights reserved.', madeWith: 'Made with', in: 'in' }
+        contact: { title: 'Contact Us', subtitle: "Get in touch to transform your company's event management", company: 'Company Name', name: 'Contact Person', email: 'Email', employees: 'Number of Employees', selectRange: 'Select range', message: 'Message', send: 'Send Message', submitSuccess: 'Thank you for your message! We will contact you soon.', submitError: 'Oops! There was a problem submitting your form.' },
+        footer: { copyright: '© 2025 TeamUP. All rights reserved.', madeWith: 'Made with', in: 'in' }
       },
       fr: {
         nav: { features: "Fonctionnalités", about: "À propos", pricing: "Tarifs", getStarted: "Commencer" },
         hero: { title: "Transformez vos Événements d'Entreprise", description: "Permettez à vos employés de créer, gérer et participer à des événements d'entreprise avec notre plateforme personnalisable. Disponible sur iOS et Android.", cta: 'Demander une Démo' },
-        whyChoose: { title: "Pourquoi Choisir Team Up ?", subtitle: "Simplifiez la gestion des événements tout en renforçant vos équipes", security: { title: "Sécurité Entreprise", desc: "Intégration transparente avec le système d'authentification de votre entreprise et stockage des données sur site en option." }, branding: { title: "Personnalisation", desc: "Plateforme entièrement personnalisable avec les couleurs, le logo et l'expérience de marque de votre entreprise." }, analytics: { title: "Analyses & Insights", desc: "Statistiques et journaux complets pour suivre l'engagement et mesurer le succès du team building." }, employee: { title: "Géré par les Employés", desc: "Permettez aux employés d'organiser des événements, favorisant la collaboration et l'esprit d'équipe." }, mobile: { title: "Mobile First", desc: "Applications natives pour iOS et Android, personnalisées pour votre entreprise." }, cost: { title: "Coût Efficace", desc: "Réduisez les frais de gestion des événements tout en augmentant l'engagement des employés." } },
+        whyChoose: { title: "Pourquoi Choisir TeamUP ?", subtitle: "Simplifiez la gestion des événements tout en renforçant vos équipes", security: { title: "Sécurité Entreprise", desc: "Intégration transparente avec le système d'authentification de votre entreprise et stockage des données sur site en option." }, branding: { title: "Personnalisation", desc: "Plateforme entièrement personnalisable avec les couleurs, le logo et l'expérience de marque de votre entreprise." }, analytics: { title: "Analyses & Insights", desc: "Statistiques et journaux complets pour suivre l'engagement et mesurer le succès du team building." }, employee: { title: "Géré par les Employés", desc: "Permettez aux employés d'organiser des événements, favorisant la collaboration et l'esprit d'équipe." }, mobile: { title: "Mobile First", desc: "Applications natives pour iOS et Android, personnalisées pour votre entreprise." }, cost: { title: "Coût Efficace", desc: "Réduisez les frais de gestion des événements tout en augmentant l'engagement des employés." } },
         trusted: { title: "Reconnu par les leaders du secteur", subtitle: "Plus de 10 entreprises nous font confiance." },
-        about: { title: "À propos de Team Up", subtitle: "Construire des équipes plus fortes grâce à une gestion événementielle simplifiée", description: "Team Up est une plateforme de gestion d'événements d'entreprise conçue pour renforcer la culture d'entreprise et les liens d'équipe. Notre plateforme permet aux employés de prendre l'initiative dans l'organisation d'événements tout en fournissant aux entreprises les outils pour superviser et analyser les activités de team building." },
+        about: { title: "À propos de TeamUP", subtitle: "Construire des équipes plus fortes grâce à une gestion événementielle simplifiée", description: "TeamUP est une plateforme de gestion d'événements d'entreprise conçue pour renforcer la culture d'entreprise et les liens d'équipe. Notre plateforme permet aux employés de prendre l'initiative dans l'organisation d'événements tout en fournissant aux entreprises les outils pour superviser et analyser les activités de team building." },
         pricing: { title: "Tarification Flexible", subtitle: "Choisissez le forfait idéal pour votre entreprise", starter: { title: "Débutant", price: "99€/mois", features: ["Jusqu'à 100 employés", "Analyses de base", "Support standard", "Stockage cloud"], cta: "Commencer" }, professional: { title: "Professionnel", price: "199€/mois", features: ["Jusqu'à 500 employés", "Analyses avancées", "Support prioritaire", "Personnalisation"], cta: "Commencer" }, enterprise: { title: "Entreprise", price: "Sur mesure", features: ["Employés illimités", "Intégration personnalisée", "Support 24/7", "Option sur site"], cta: "Contactez-nous" } },
-        contact: { title: "Contactez-nous", subtitle: "Contactez-nous pour transformer la gestion de vos événements", company: "Nom de l'entreprise", name: "Personne à contacter", email: "Email", employees: "Nombre d'employés", selectRange: "Sélectionner", message: "Message", send: "Envoyer", submitSuccess: 'Merci de votre intérêt ! Nous vous contacterons bientôt.' },
-        footer: { copyright: "© 2025 Team Up. Tous droits réservés.", madeWith: "Fait avec", in: "en" }
+        contact: { title: "Contactez-nous", subtitle: "Contactez-nous pour transformer la gestion de vos événements", company: "Nom de l'entreprise", name: "Personne à contacter", email: "Email", employees: "Nombre d'employés", selectRange: "Sélectionner", message: "Message", send: "Envoyer", submitSuccess: 'Merci pour votre message ! Nous vous contacterons bientôt.', submitError: "Oops ! Un problème est survenu lors de l'envoi de votre formulaire." },
+        footer: { copyright: "© 2025 TeamUP. Tous droits réservés.", madeWith: "Fait avec", in: "en" }
       }
     };
 
-    // Contact form submission with translated alert
+    // Formspree contact form submission handling
     const contactForm = document.getElementById('contactForm');
+    const formStatus = document.getElementById('form-status');
+
+    async function handleSubmit(event) {
+      event.preventDefault(); // Prevent default browser submission
+      const currentLang = document.documentElement.lang || 'en';
+      const formData = new FormData(event.target);
+
+      try {
+        const response = await fetch(event.target.action, {
+          method: contactForm.method,
+          body: formData,
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+
+        if (response.ok) {
+          formStatus.textContent = translations[currentLang].contact.submitSuccess;
+          formStatus.style.color = 'green';
+          contactForm.reset(); // Reset form fields
+        } else {
+          // Try to get more specific error from Formspree response if available
+          response.json().then(data => {
+            if (data.errors && data.errors.length > 0) {
+                formStatus.textContent = data.errors.map(error => error.message).join(", ");
+            } else {
+                formStatus.textContent = translations[currentLang].contact.submitError;
+            }
+            formStatus.style.color = 'red';
+          })
+        }
+      } catch (error) {
+        formStatus.textContent = translations[currentLang].contact.submitError;
+        formStatus.style.color = 'red';
+      }
+    }
+
     if (contactForm) {
-      contactForm.addEventListener('submit', function(e) {
-        e.preventDefault(); // Prevent actual form submission
-        const currentLang = document.documentElement.lang || 'en'; // Get current language
-        // Get the appropriate message from translations, with a fallback
-        const alertMessage = (translations[currentLang] && translations[currentLang].contact && translations[currentLang].contact.submitSuccess)
-                             ? translations[currentLang].contact.submitSuccess
-                             : 'Thank you for your interest! We will contact you soon.';
-        alert(alertMessage); // Show the alert
-        this.reset(); // Reset the form fields
-      });
+      contactForm.addEventListener("submit", handleSubmit);
     }
     
     // Function to switch language
     function switchLanguage(lang) {
-      // Ensure the selected language exists in our translations
       if (!translations[lang]) {
         console.error("Translation not found for language:", lang);
         return;
       }
 
-      // Update active flag style
       document.querySelectorAll('.language-switcher .flag').forEach(f => f.classList.remove('active'));
-      const activeFlagSelector = `.language-switcher img[alt="${lang === 'en' ? 'English language' : 'Langue française'}"]`; // Match updated alt text
+      const activeFlagSelector = `.language-switcher img[alt="${lang === 'en' ? 'English language' : 'Langue française'}"]`;
       const activeFlag = document.querySelector(activeFlagSelector);
       if (activeFlag) {
         activeFlag.classList.add('active');
       }
       
-      // Set the lang attribute on the HTML element
       document.documentElement.lang = lang;
-      const t = translations[lang]; // Get the translation object for the selected language
+      const t = translations[lang]; 
 
-      // Helper function to safely set text content or innerHTML
       const setText = (selector, translationKey, isHTML = false) => {
         const element = document.querySelector(selector);
-        if (element && translationKey !== undefined) { // Check if translationKey is defined
+        if (element && translationKey !== undefined) { 
           if (isHTML) element.innerHTML = translationKey;
           else element.innerText = translationKey;
-        } else if (element && translationKey === undefined) {
-          // console.warn(`Translation key missing for selector: ${selector} in lang: ${lang}`);
         }
       };
       
-      // Helper function to set text for multiple elements (e.g., feature items in pricing cards)
-      const setTextForMultiple = (baseSelector, itemSelector, translationArray) => {
-          const baseElement = document.querySelector(baseSelector);
-          if (baseElement && translationArray) {
-              const elements = baseElement.querySelectorAll(itemSelector);
-              elements.forEach((el, index) => {
-                  if (translationArray[index] !== undefined) {
-                      el.innerText = translationArray[index];
-                  }
-              });
-          }
-      };
+      // Update company name TeamUP in relevant places
+      document.querySelectorAll('.logo').forEach(el => el.innerText = "TeamUP");
+      if(t.og) { // If OpenGraph translations exist
+          const ogSiteName = document.querySelector('meta[property="og:site_name"]');
+          if(ogSiteName) ogSiteName.setAttribute('content', "TeamUP");
+      }
+      if (t.whyChoose) setText('#features .section-title h2', t.whyChoose.title);
+      if (t.about) setText('#about .section-title h2', t.about.title);
+      if (t.footer && t.footer.copyright) {
+          const copyrightElement = document.querySelector('.copyright');
+          if (copyrightElement) copyrightElement.innerText = t.footer.copyright.replace('Team Up', 'TeamUP');
+      }
+      const madeInFranceEl = document.querySelector('.made-in-france img');
+      if (madeInFranceEl) madeInFranceEl.setAttribute('alt', `Flag of France, indicating the origin of TeamUP.`);
 
-      // --- Apply Translations ---
 
-      // Navigation Links
       const navLinks = document.querySelectorAll('.nav-links a');
-      const navIcons = ['star', 'info-circle', 'tag', 'rocket']; // Corresponds to navKeys
+      const navIcons = ['star', 'info-circle', 'tag', 'rocket']; 
       const navKeys = ['features', 'about', 'pricing', 'getStarted'];
       if (navLinks.length === navKeys.length && t.nav) {
         navKeys.forEach((key, i) => {
@@ -625,16 +642,14 @@
         });
       }
 
-      // Hero Section
       if (t.hero) {
         setText('.hero h1', t.hero.title);
         setText('.hero p', t.hero.description);
         setText('.hero .cta-btn', t.hero.cta);
       }
 
-      // Why Choose Team Up? (Features Section)
       if (t.whyChoose) {
-        setText('#features .section-title h2', t.whyChoose.title);
+        // setText('#features .section-title h2', t.whyChoose.title); // Already updated above
         setText('#features .section-title p', t.whyChoose.subtitle);
         
         const featureCards = document.querySelectorAll('#features .feature-card');
@@ -647,26 +662,23 @@
         });
       }
       
-      // Trusted By Section
       if (t.trusted) {
         setText('.trusted .section-title h2', t.trusted.title);
         setText('.trusted .section-title p', t.trusted.subtitle);
       }
 
-      // About Section
       if (t.about) {
-        setText('#about .section-title h2', t.about.title);
+        // setText('#about .section-title h2', t.about.title); // Already updated above
         setText('#about .section-title p', t.about.subtitle);
         setText('#about .about-content p', t.about.description);
       }
 
-      // Pricing Section
       if (t.pricing) {
         setText('#pricing .section-title h2', t.pricing.title);
         setText('#pricing .section-title p', t.pricing.subtitle);
 
         const pricingCards = document.querySelectorAll('#pricing .pricing-card');
-        const plans = ['starter', 'professional', 'enterprise']; // Keys in translations.pricing object
+        const plans = ['starter', 'professional', 'enterprise']; 
         plans.forEach((planKey, i) => {
           if (pricingCards[i] && t.pricing[planKey]) {
             const planData = t.pricing[planKey];
@@ -674,7 +686,6 @@
             
             const priceElement = pricingCards[i].querySelector('.price');
             if (priceElement) {
-                // For "Custom" or "Sur mesure", just set text. Otherwise, include span for "/month".
                 if (planData.price.toLowerCase() === 'custom' || planData.price.toLowerCase() === 'sur mesure') {
                     priceElement.innerText = planData.price;
                 } else {
@@ -682,7 +693,6 @@
                 }
             }
             
-            // Translate feature items for each card
             const featureItemsContainer = pricingCards[i].querySelector('.features');
             if(featureItemsContainer && planData.features) {
                 const featureItemElements = featureItemsContainer.querySelectorAll('.feature-item');
@@ -692,8 +702,6 @@
                     }
                 });
             }
-
-            // Translate CTA button text for each pricing card
             const ctaButton = pricingCards[i].querySelector('.cta-btn');
             if (ctaButton && planData.cta) {
               ctaButton.innerText = planData.cta;
@@ -702,7 +710,6 @@
         });
       }
 
-      // Contact Section
       if (t.contact) {
         setText('#contact .section-title h2', t.contact.title);
         setText('#contact .section-title p', t.contact.subtitle);
@@ -710,35 +717,32 @@
         setText('label[for="name"]', t.contact.name);
         setText('label[for="email"]', t.contact.email);
         setText('label[for="employees"]', t.contact.employees);
-        setText('#employees option[value=""]', t.contact.selectRange); // Placeholder for select
+        setText('#employees option[value=""]', t.contact.selectRange); 
         setText('label[for="message"]', t.contact.message);
         setText('#contactForm button[type="submit"]', t.contact.send);
+        // Clear previous form status message on language switch
+        if(formStatus) formStatus.textContent = ''; 
       }
 
-      // Footer
       if (t.footer) {
-        setText('.copyright', t.footer.copyright);
-        const madeInFranceEl = document.querySelector('.made-in-france');
-        if (madeInFranceEl) { // Reconstruct the "Made with..." part for translation
-          madeInFranceEl.innerHTML = `${t.footer.madeWith} <i class="fas fa-heart" style="color:#e74c3c;" aria-hidden="true"></i> ${t.footer.in} France <img src="https://flagcdn.com/w40/fr.png" alt="Flag of France, indicating the origin of Team Up.">`;
+        // setText('.copyright', t.footer.copyright); // Already updated above
+        const madeInFranceContainer = document.querySelector('.made-in-france');
+        if (madeInFranceContainer) { 
+          const heartIcon = madeInFranceContainer.querySelector('.fa-heart');
+          const flagImg = madeInFranceContainer.querySelector('img');
+          madeInFranceContainer.childNodes[0].nodeValue = `${t.footer.madeWith} `; // Text before heart
+          if (heartIcon && flagImg) { // Ensure elements exist
+             // Text after heart, before flag
+            flagImg.previousSibling.nodeValue = ` ${t.footer.in} France `;
+          }
         }
       }
     }
 
-    // Set initial language based on browser settings or default to 'en'
     document.addEventListener('DOMContentLoaded', () => {
       const browserLang = navigator.language || navigator.userLanguage;
       const initialLang = browserLang.startsWith('fr') ? 'fr' : 'en';
       switchLanguage(initialLang);
-
-      // Optional: Hamburger menu toggle logic (if you uncomment the HTML and CSS for it)
-      // const menuToggle = document.querySelector('.menu-toggle');
-      // const navLinksEl = document.querySelector('.nav-links');
-      // if (menuToggle && navLinksEl) {
-      //   menuToggle.addEventListener('click', () => {
-      //     navLinksEl.classList.toggle('active'); // 'active' class would make it display
-      //   });
-      // }
     });
   </script>
 </body>
